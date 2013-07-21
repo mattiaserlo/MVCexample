@@ -1,0 +1,8 @@
+C:\Mattias\MVCexample\MVCexample\bin\Debug\MVCexample.exe
+C:\Mattias\MVCexample\MVCexample\bin\Debug\MVCexample.pdb
+C:\Mattias\MVCexample\MVCexample\obj\Debug\ResolveAssemblyReference.cache
+C:\Mattias\MVCexample\MVCexample\obj\Debug\MVCexample.Form1.resources
+C:\Mattias\MVCexample\MVCexample\obj\Debug\MVCexample.Properties.Resources.resources
+C:\Mattias\MVCexample\MVCexample\obj\Debug\MVCexample.csproj.GenerateResource.Cache
+C:\Mattias\MVCexample\MVCexample\obj\Debug\MVCexample.exe
+C:\Mattias\MVCexample\MVCexample\obj\Debug\MVCexample.pdb
