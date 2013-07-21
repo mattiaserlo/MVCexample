@@ -13,12 +13,12 @@ namespace MVCexample
       SUBTRACTING
     }
 
-    private int currentNumber = 0;
-    private int storedNumber = 0;
+    private int mCurrentNumber = 0;
+    private int mStoredNumber = 0;
 
-    private bool clearOnNextNumber = false;
+    private bool mClearOnNextNumber = false;
 
-    private State currentState = State.IDLE;
+    private State mCurrentState = State.IDLE;
 
     private PubSub mPubSub = null;
 
@@ -29,61 +29,61 @@ namespace MVCexample
 
     public void pushNumber(int number)
     {
-      if (clearOnNextNumber == true)
+      if (mClearOnNextNumber == true)
       {
-        currentNumber = 0;
-        clearOnNextNumber = false;
+        mCurrentNumber = 0;
+        mClearOnNextNumber = false;
       }
 
-      currentNumber *= 10;
-      currentNumber += number;
+      mCurrentNumber *= 10;
+      mCurrentNumber += number;
 
       if (mPubSub != null)
       {
-        mPubSub.publish(SubscriptionType.NUMBER_UPDATED, currentNumber);
+        mPubSub.publish(SubscriptionType.NUMBER_UPDATED, mCurrentNumber);
       }
     }
 
     public void add()
     {
-      currentState = State.ADDING;
-      storedNumber = currentNumber;
-      clearOnNextNumber = true;
+      mCurrentState = State.ADDING;
+      mStoredNumber = mCurrentNumber;
+      mClearOnNextNumber = true;
     }
 
     public void subtract()
     {
-      currentState = State.SUBTRACTING;
-      storedNumber = currentNumber;
-      clearOnNextNumber = true;
+      mCurrentState = State.SUBTRACTING;
+      mStoredNumber = mCurrentNumber;
+      mClearOnNextNumber = true;
     }
 
     public void clear()
     {
-      currentNumber = 0;
+      mCurrentNumber = 0;
       if (mPubSub != null)
       {
-        mPubSub.publish(SubscriptionType.NUMBER_UPDATED, currentNumber);
+        mPubSub.publish(SubscriptionType.NUMBER_UPDATED, mCurrentNumber);
       }
     }
 
     public void equals()
     {
-      if (currentState == State.ADDING)
+      if (mCurrentState == State.ADDING)
       {
-        currentNumber = storedNumber + currentNumber;
+        mCurrentNumber = mStoredNumber + mCurrentNumber;
       }
-      else if (currentState == State.SUBTRACTING)
+      else if (mCurrentState == State.SUBTRACTING)
       {
-        currentNumber = storedNumber - currentNumber;
+        mCurrentNumber = mStoredNumber - mCurrentNumber;
       }
 
       if (mPubSub != null)
       {
-        mPubSub.publish(SubscriptionType.NUMBER_UPDATED, currentNumber);
+        mPubSub.publish(SubscriptionType.NUMBER_UPDATED, mCurrentNumber);
       }
 
-      currentState = State.IDLE;
+      mCurrentState = State.IDLE;
     }
   }
 }
